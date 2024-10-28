@@ -1,0 +1,57 @@
+{
+  "name": "electron-react-demo",
+  "version": "1.0.0",
+  "description": "An Electron React demo app",
+  "main": "main.js",
+  "homepage": "https://example.com",
+  "author": {
+    "name": "Zubair",
+    "email": "zubairhabibawan88@gmail.com"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build-react": "cd frontend && npm run build",
+    "build": "npm run build-react && electron-builder",
+    "build:mac": "npm run build-react && electron-builder --mac",
+    "build:win": "npm run build-react && electron-builder --win",
+    "build:linux": "npm run build-react && electron-builder --linux"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^33.0.2",
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "sqlite3": "^5.1.7"
+  },
+  "build": {
+    "productName": "ElectronReactDemo",
+    "appId": "com.yourcompany.electronreactdemo",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "frontend/build/**/*",
+      "main.js",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "target": ["dmg", "zip"],
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Utility",
+      "icon": "build/icons",
+      "maintainer": "Zubair <zubairhabibawan88@gmail.com>"
+    }
+  }
+}
